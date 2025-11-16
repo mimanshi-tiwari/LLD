@@ -2,13 +2,29 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import './index.css'; // Assuming you have a styles.css for global styles
+import AboutUs from "./components/AboutUs";
+
+import { BrowserRouter, Routes, Route } from 'react-router'
+import { ProtectedRoutes } from "./components/ProtectedRoute";
 
 const App = () => {
     return (
         <div className="app">
-        <h1>Shimmer UI</h1>
-        <p>Welcome to the Shimmer UI application!</p>
-        <div><Body /></div>
+            <header className="bg-gray-900 text-white text-xl font-bold py-5">
+                <nav className="px-9 flex gap-2.5">
+                    <a href="/">Memes</a>
+                    <a href="/about-us">AboutUs</a>
+                    {/* <a href="/">MEMEs</a> */}
+                </nav>
+            </header>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Body />} />
+                    <Route element={<ProtectedRoutes />}>
+                        <Route path="/about-us" element={<AboutUs />}/>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
