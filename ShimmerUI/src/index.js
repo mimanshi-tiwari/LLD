@@ -6,6 +6,7 @@ import AboutUs from "./components/AboutUs";
 
 import { BrowserRouter, Routes, Route } from 'react-router'
 import { ProtectedRoutes } from "./components/ProtectedRoute";
+import Autocomplete from "./components/Autocomplete";
 
 const App = () => {
     return (
@@ -14,7 +15,7 @@ const App = () => {
                 <nav className="px-9 flex gap-2.5">
                     <a href="/">Memes</a>
                     <a href="/about-us">AboutUs</a>
-                    {/* <a href="/">MEMEs</a> */}
+                    <a href="/autocomplete">Autocomplete</a>
                 </nav>
             </header>
             <BrowserRouter>
@@ -22,6 +23,7 @@ const App = () => {
                     <Route path="/" element={<Body />} />
                     <Route element={<ProtectedRoutes />}>
                         <Route path="/about-us" element={<AboutUs />}/>
+                        <Route path="/autocomplete" element={<Autocomplete />}/>
                     </Route>
                 </Routes>
             </BrowserRouter>
